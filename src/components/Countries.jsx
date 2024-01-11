@@ -1,24 +1,13 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import Country from './Country'
 
-function Countries({ countries }) {
-  const [filteredCountries, setFilteredCountries] = useState(null)
-	const [searchString, setSearchString] = useState("")
-
-	useEffect(() => setFilteredCountries(countries
-		.filter(country => country.name.common.toLowerCase().includes(searchString.toLowerCase()))	
-	), [searchString, countries])
-
+function Countries({ countries, setSearchName }) {
 	return (
 		<div className='countries'>
-			<input type="text" placeholder="search" onChange={event => setSearchString(event.target.value)}/>
+			<input type="text" placeholder="search" onChange={event => setSearchName(event.target.value)}/>
 
-			{searchString === "" 
-				? 
-				countries.map((country, index) => <Country country={country} key={index}/>)
-				:
-				filteredCountries.map((country, index) => <Country country={country} key={index}/>)
-			}
+			{countries
+				.map((country, index) => <Country country={country} key={index} />)}
 		</div>
 	)
 }
