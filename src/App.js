@@ -8,8 +8,8 @@ function App() {
   const [timerId, setTimerId] = useState(0)
 
   useEffect(() => {
-    console.log(timerId)
-  }, [timerId])
+    console.log(countries)
+  }, [countries])
 
   useEffect(() => {
     clearTimeout(timerId)
@@ -35,7 +35,7 @@ function App() {
 
   return (
     <div className="App">
-      {countries ? <Countries countries={countries} setSearchName={setSearchName}/> : <p>loading...</p>}
+      {countries ? <Countries countries={countries} setCountries={setCountries} setSearchName={setSearchName}/> : <p>loading...</p>}
     </div>
   );
 }
